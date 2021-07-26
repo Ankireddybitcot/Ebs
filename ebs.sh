@@ -18,7 +18,7 @@
 ##################
 # Change these accordingly:
 AWS_CLI=/bin/aws
-REGION=${EC2_AWSAVZONE::-1}
+REGION=us-west-2
 FS_USAGE=10
 PERCENTAGE_INCREASE=10
 MAX_EBS_SIZE=250
@@ -81,7 +81,7 @@ do
         if [ $VOL_SIZE -ne $NEW_SIZE ]; then
             echo "[INFO] Changing size (G) from $CURRENT_SIZE to $NEW_SIZE"
             $AWS_CLI ec2 modify-volume --region=$REGION --volume-id $VOL_ID \
-            --size=$NEW_SIZE
+            --size=100
             if [ $? -ne 0 ]; then
                 terminate "[ERROR] aws ec2 modify-volume failed to run"
             fi
